@@ -1,0 +1,19 @@
+<h1>Edit band</h1>
+
+
+
+<form class="update_band" action="<%= band_url(@band) %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <label for="name">Name: </label>
+  <input id="name" type="text" name="bands[name]" value="<%= @band.name %>">
+
+  <input type="submit" name="" value="submit">
+</form>
+
+
+<form class="bands_index" action="<%= bands_url %>" method="GET">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="submit" name="" value="all bands">
+</form>

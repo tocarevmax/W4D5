@@ -1,0 +1,27 @@
+<form class="back_to_album" action="<%= album_url(@track.album) %>" method="get">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="submit" name="" value="back to album">
+</form>
+
+<h1>Track Show</h1>
+
+id: <%= @track.id %> <br>
+title: <%= @track.title %><br>
+ord: <%= @track.ord %><br>
+album_id: <%= @track.album_id %><br>
+regular: <%= @track.regular %><br>
+lyrics: <%= @track.lyrics %><br>
+
+
+<br><br><br>
+
+<form class="edit_track" action="<%= edit_track_url(@track) %>" method="get">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="submit" name="" value="edit track">
+</form>
+
+<form class="delete_track" action="<%= track_url(@track) %>" method="post">
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="submit" name="" value="delete track">
+</form>

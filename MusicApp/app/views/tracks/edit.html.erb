@@ -1,0 +1,28 @@
+
+
+<form class="back_to_parent_album" action="<%=album_url(@parent_album)%>" method="get">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="submit" name="" value="back to album">
+</form>
+
+<h2>Edit track for "<%= @parent_album.title %>" album</h2>
+
+<form class="update_track" action="<%= track_url(@track) %>" method="post">
+  <input type="hidden" name="_method" value="PATCH">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <label for="title">Title: </label>
+  <input id="title" type="text" name="tracks[title]" value="<%= @track.title %>"><br>
+
+  <label for="ord">Ord: </label>
+  <input id="ord" type="text" name="tracks[ord]" value="<%= @track.ord %>"><br>
+
+  <input type="hidden" name="tracks[album_id]" value="<%= @parent_album.id %>">
+
+  <input <%= @track.regular == true ? "checked" : "" %> type="radio" name="tracks[regular]" value="true">Regular
+  <input <%= @track.regular == false ? "checked" : "" %> type="radio" name="tracks[regular]" value="false">Bonus<br>
+
+  <textarea name="tracks[lyrics]" rows="8" cols="80"><%= @track.lyrics %></textarea>
+
+  <input type="submit" name="" value="submit">
+</form>

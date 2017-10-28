@@ -1,0 +1,30 @@
+
+<form class="index_bands" action="<%= bands_url %>" method="GET">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="submit" name="" value="all bands">
+</form>
+
+<h1><%= @band.name %></h1>
+
+<h4>Albums:</h4>
+
+<% @band.albums.each do |album| %>
+  <h5><a href="<%= album_url(album) %>"><%= album.title %></a></h5>
+<% end %>
+
+
+<form class="edit" action="<%= edit_band_url(@band) %>" method="get">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="submit" name="" value="edit">
+</form>
+
+<form class="delete" action="<%= band_url(@band) %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="submit" name="" value="delete">
+</form>
+
+<form class="new_album" action="<%= new_band_album_url(@band) %>" method="get">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="submit" name="" value="new album">
+</form>
